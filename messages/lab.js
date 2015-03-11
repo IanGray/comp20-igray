@@ -1,5 +1,5 @@
 var myfile = new XMLHttpRequest();
-myfile.open("get,data.json",true)
+myfile.open("get", "data.json",true)
 
 myfile.onreadystatechange = function() {
 	if(myfile.readyState == 4 && myfile.status == 200) {
