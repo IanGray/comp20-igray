@@ -1,4 +1,4 @@
-var myfile - new XMLHttpRequest();
+var myfile = new XMLHttpRequest();
 myfile.open("get,data.json",true)
 
 myfile.onreadystatechange = function() {
