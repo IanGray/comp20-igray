@@ -1,14 +1,14 @@
-var myfile = new XMLHttpRequest();
-myfile.open("get", "data.json",true)
+function parse() {
+	var myfile = new XMLHttpRequest();
+	myfile.open("get", "data.json",true)
 
-myfile.onreadystatechange = function() {
-	if(myfile.readyState == 4 && myfile.status == 200) {
-		var jsonArr = JSON.parse(myfile.responseText)
-		outputFunc(jsonArr)
+	myfile.onreadystatechange = function() {
+		if(myfile.readyState == 4 && myfile.status == 200) {
+			var jsonArr = JSON.parse(myfile.responseText)
+			outputFunc(jsonArr)
+		}
 	}
 }
-
-
 
 function outputFunc(arr) {
 	var output = "";
