@@ -8,6 +8,7 @@ function parse() {
 			outputFunc(jsonArr)
 		}
 	}
+	myfile.send()
 }
 
 function outputFunc(arr) {
