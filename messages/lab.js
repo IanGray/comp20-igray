@@ -18,4 +18,5 @@ function outputFunc(arr) {
         arr[i].content + '</p>';
     }
     document.getElementById("messages").innerHTML = output;
+    toUpdate = document.getElementById("content")
 }
