@@ -8,8 +8,8 @@ function parse() {
 			var output = "";
   			var i;
     		for(i = 0; i < arr.length; i++) {
-    		    output += '<p>' + arr[i].username + ': ' + 
-        		arr[i].content + '</p>';
+    		    output += '<p><span class="username">' + arr[i].username +
+    		    '</span>: ' + arr[i].content + '</p>';
     		}
     		document.getElementById("messages").innerHTML = output;
     		//toUpdate = document.getElementById("content")
