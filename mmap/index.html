@@ -33,7 +33,7 @@
 				var params = '"login=LayneDapper&lat=' + myLat + 'lng=' + myLng + '"';
 				var url = "secret-about-box.herokuapp.com/sendLocation"
 
-				request.open("POST",url,true)
+				request.open("post",url,true)
 
 				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				request.onreadystatechange = function() {//Call a function when the state changes.
