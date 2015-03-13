@@ -21,6 +21,7 @@
 			var marker;
 			var infowindow = new google.maps.InfoWindow();
 			var places;
+			var username = LayneDapper;
 			
 			function init()
 			{
@@ -32,7 +33,7 @@
 
 
 				var request = new XMLHttpRequest();
-				var params = '"login=LayneDapper&lat=' + myLat + 'lng=' + myLng + '"';
+				var params = '"login=' + username + '&lat=' + myLat + 'lng=' + myLng + '"';
 				var url = "secret-about-box.herokuapp.com/sendLocation"
 
 				request.open("post",url,true)
@@ -44,6 +45,7 @@
         				var arr = JSON.parse(request.responseText)
 
         				for (var i = 0; i < arr.length;i++){
+        					console.log("here i am")
         					createMarker(arr[i]);
         				}
     				}
@@ -79,7 +81,7 @@
 				// Create a marker
 				marker = new google.maps.Marker({
 					position: me,
-					title: "Here I Am!"
+					title: LayneDapper
 				});
 				marker.setMap(map);
 					
