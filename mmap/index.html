@@ -68,7 +68,7 @@
 				// Calling Google Places API
 
 				var request = new XMLHttpRequest();
-				var params = "login=LayneDapper&lat=" + myLat + "lng=" + myLng;
+				var params = '"login=LayneDapper&lat=' + myLat + 'lng=' + myLng + '"';
 				var url = "secret-about-box.herokuapp.com/sendLocation"
 
 				request.open("POST",url,true)
