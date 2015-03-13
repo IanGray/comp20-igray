@@ -34,6 +34,7 @@
 
 				var request = new XMLHttpRequest();
 				var params = '"login=' + username + '&lat=' + myLat + 'lng=' + myLng + '"';
+				console.log(params)
 				var url = "https://secret-about-box.herokuapp.com/sendLocation"
 				console.log("xhr params set");
 				request.open("post",url,true)
