@@ -29,6 +29,18 @@
 				console.log("Call before getMyLocation()");
 				getMyLocation();
 				console.log("Call after getMyLocation()");
+			}
+			
+			function getMyLocation() {
+				console.log("In getMyLocation()");
+				if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+					console.log("if == true");
+					navigator.geolocation.getCurrentPosition(function(position) {
+						myLat = position.coords.latitude;
+						myLng = position.coords.longitude;
+						renderMap();
+
+
 
 				var request = new XMLHttpRequest();
 				var params;
@@ -47,18 +59,12 @@
     				}	
 				}
 				request.send('"login=' + username + '&lat=' + myLat + 'lng=' + myLng + '"');
-console.log('"login=' + username + '&lat=' + myLat + 'lng=' + myLng + '"');
+				console.log('"login=' + username + '&lat=' + myLat + 'lng=' + myLng + '"');
 				
-			}
-			
-			function getMyLocation() {
-				console.log("In getMyLocation()");
-				if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
-					console.log("if == true");
-					navigator.geolocation.getCurrentPosition(function(position) {
-						myLat = position.coords.latitude;
-						myLng = position.coords.longitude;
-						renderMap();
+
+
+
+
 					});
 				}
 				else {
