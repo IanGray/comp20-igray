@@ -40,9 +40,10 @@ console.log("xhr params set");
 console.log("request open");
 				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				console.log("request header changed");
+				console.log(request.readyState)
 				request.onreadystatechange = function() {//Call a function when the state changes.
 					console.log("in func");
-					console.log(request.readyState)
+
     				if(request.readyState == 4 && request.status == 200) {
     					console.log("readystate = 4")
         				alert(request.responseText);
