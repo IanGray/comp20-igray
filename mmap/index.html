@@ -42,6 +42,7 @@ console.log("request open");
 				console.log("request header changed");
 				request.onreadystatechange = function() {//Call a function when the state changes.
 					console.log("in func");
+					console.log(request.readystate)
     				if(request.readyState == 4 && request.status == 200) {
     					console.log("readystate = 4")
         				alert(request.responseText);
