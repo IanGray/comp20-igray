@@ -35,12 +35,12 @@
 				var request = new XMLHttpRequest();
 				var params = '"login=' + username + '&lat=' + myLat + 'lng=' + myLng + '"';
 				var url = "secret-about-box.herokuapp.com/sendLocation"
-console.log("xhr params set");
+				console.log("xhr params set");
 				request.open("post",url,true)
-console.log("request open");
+				console.log("request open");
 				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				console.log("request header changed");
-				console.log(request.readyState)
+				console.log(request.readyState);
 				request.onreadystatechange = function() {//Call a function when the state changes.
 					console.log("in func");
 
