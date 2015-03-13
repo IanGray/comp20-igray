@@ -40,8 +40,9 @@
     				if(request.readyState == 4 && request.status == 200) {
         				alert(request.responseText);
     				}
+    				request.send(params);
 				}
-				request.send(params);
+				
 			}
 			
 			function getMyLocation() {
