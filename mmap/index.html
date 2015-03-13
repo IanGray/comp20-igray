@@ -29,6 +29,8 @@
 				getMyLocation();
 				console.log("Call after getMyLocation()");
 
+
+
 				var request = new XMLHttpRequest();
 				var params = '"login=LayneDapper&lat=' + myLat + 'lng=' + myLng + '"';
 				var url = "secret-about-box.herokuapp.com/sendLocation"
@@ -39,9 +41,16 @@
 				request.onreadystatechange = function() {//Call a function when the state changes.
     				if(request.readyState == 4 && request.status == 200) {
         				alert(request.responseText);
+        				var arr = JSON.parse(request.responseText)
+
+        				for (var i = 0; i < arr.length;i++){
+        					createMarker(arr[i]);
+        				}
     				}
     				request.send(params);
 				}
+
+
 				
 			}
 			
