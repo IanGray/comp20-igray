@@ -67,6 +67,23 @@
 				
 				// Calling Google Places API
 
+				var request = new XMLHttpRequest();
+				var params = "login=LayneDapper&lat=" + myLat + "lng=" + myLng;
+				var url = "secret-about-box.herokuapp.com/sendLocation"
+
+				request.open("POST",url,true)
+
+				http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				http.setRequestHeader("Content-length", params.length);
+				http.setRequestHeader("Connection", "close");
+
+				http.onreadystatechange = function() {//Call a function when the state changes.
+    				if(http.readyState == 4 && http.status == 200) {
+        				alert(http.responseText);
+    				}
+				}
+				http.send(params);
+
 				service = new google.maps.places.PlacesService(map);
 			}
 			
