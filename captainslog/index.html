@@ -7,17 +7,25 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
-		console.log("yay")
-		$("#msg").change(function update() {
-			console.log("in handler function")
-			newEntry = document.getElementById("msg").value;
-			starDate = new Date();
+		$(document).ready(function(){
+			$("#msg").change(function update() {
+				console.log("in handler function")
+				newEntry = document.getElementById("msg").value;
+				starDate = new Date();
 
-			timeStamp = starDate.toDateString () + ", " + starDate.toTimeString();
-			newLog = timeStamp + " - " + starDate;
+				timeStamp = starDate.toDateString () + ", " + starDate.toTimeString();
+				newLog = timeStamp + " - " + newEntry;
 
-			$("#log").prepend("<p>newLog</p>");
-		})
+				$("#log").prepend("<p>"+newLog+"</p>");
+				data = localStorage.getItem("captainsLog");
+				if (data == null){
+					data = '';
+				}
+				data = "<p>"+newLog+"</p>" + data;
+				localStorage.setItem("captainsLog",data);
+				console.log(localStorage.getItem("captainsLog"));
+			});
+		});
 		</script>
 </head>
 
