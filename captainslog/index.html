@@ -7,9 +7,9 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
-		$("#msg").change(change());
-
-		function update() {
+		console.log("yay")
+		$(input).change(function update() {
+			console.log("in handler function")
 			newEntry = document.getElementById("msg").value;
 			starDate = new Date();
 
@@ -17,7 +17,7 @@
 			newLog = timeStamp + " - " + starDate;
 
 			$("#log").prepend("<p>newLog</p>");
-		}
+		})
 		</script>
 </head>
 
