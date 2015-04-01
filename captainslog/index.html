@@ -8,13 +8,17 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			//Pull from local storage
+			$("#log").prepend(localStorage.getItem("captainsLog"));
+
+			//New Log
 			$("#msg").change(function update() {
-				console.log("in handler function")
 				newEntry = document.getElementById("msg").value;
 				starDate = new Date();
 
 				timeStamp = starDate.toDateString () + ", " + starDate.toTimeString();
 				newLog = timeStamp + " - " + newEntry;
+				$("#msg").val('');
 
 				$("#log").prepend("<p>"+newLog+"</p>");
 				data = localStorage.getItem("captainsLog");
@@ -23,7 +27,7 @@
 				}
 				data = "<p>"+newLog+"</p>" + data;
 				localStorage.setItem("captainsLog",data);
-				console.log(localStorage.getItem("captainsLog"));
+
 			});
 		});
 		</script>
