@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<title> Ian Gray: Security Report </title>
+	<link rel="stylesheet" href="securityStyle.css">
+	<meta charset = "utf-8">
+</head>
+
+<body>
+	<h1>Comp 20 Assignment 4: Security</h1>
+	<h2>Ian Gray</h2>
+	<h4>Introduction</h4>
+	<p>I will be analyzing security issues in Nathan Justice’s 2nd and 3rd assignments for comp 20.   I will be looking for possible ways to implement XXS attacks and exploiting the database .</p>
+
+
+	<h4>Methodology</h4>
+		<p>I first tried to break Nathan’s code by testing the server’s http GET ‘/’ method, along with http POST to place scripts in his data base.  Further looking at the code, I noticed that the http POST method was easily targeted as it does not make any attempt to sterilize data.  I also looked for possible ways to exploit the database by cluttering it with data or gaining access to things I shouldn’t be able to.</p>
+
+	<h4>Findings</h4>
+		<p>My analysis found that the site is especially susceptible to XXS attacks in the POST ‘/sendLocation’ method, as no data sterilization is present.  A second vulnerability is that the location.json method does not do much to validate the query.  I could change the login to reflect a different query.  Adding things such as [$ne] allow for the query allow for a lot of probing into the database to get things that may no be intended for me.</p>
+
+	<h4>Issues and Analysis</h4>
+		<p>The biggest issue with this website was the lack of sterilization in the login field for the POST method.  This allowed me to place scripts into the database which would then be displayed and executed by any client using the GET ‘/’ path.  I exploited this first by testing it using the alert method from javascript, and then got a little more malicious and decided to insert the following script: 
+			<code>&lt;script&gt;for(i=0;i&lt;10;i++){window.open('http://robertbcairns.com/wp-content/uploads/2015/03/hacked1.jpg');}&lt;/script&gt;</code>
+		.  Fun fact, either curl or mongoDB decided to strip of the ++ from the loop, so my intended goal of opening the picture at the url in 10 new tabs, it became an infinite loop and opened over 700 times before crashing my browser (I have since gone on to Nathan’s heroku page and deleted that from the database to avoid anyone else falling prey to this).  This type of cross site scripting attack could be avoided by sterilizing data by encoding special characters to avoid scripts from being inserted.</p>
+
+		<p>A second issue is the ability to modify the query for the location.json method.  Having the ability to add modifiers like [$ne] around the code makes it easy enough to probe into the database, potentially gaining access to information that shouldn’t be accessed.  Modifying this query allows for a lot of unwanted snooping around.  This said, Nathan has partially mitigated this risk by only displaying one object in the database when a user uses the location.json method.  Without this, using the [$ne] modifier would allow an attacker to easily gain access to the entire database.</p>
+
+		<p>Another major concern is one that comes inherently from using mongoDB.  I could repeatable add to the database with nonsensical entries, causing the database to fill up with clutter.  Eventually, this could fill up the allowed space for mongo, rendering the application unusable.</p>
+
+	<h4>Conclusion</h4>
+		<p>While several vulnerabilities are present with this web app, the greatest threat is by far cross-site scripting.  Taking better car to validate user input would greatly reduce this risk.  Sterilizing and validating all user inputs, along with making sure that mongoDB has encryption and administrator validation on would reduce risks to the database as well.</p>
+
+</body>
+</html>
